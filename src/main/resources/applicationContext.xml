@@ -6,8 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <bean id="testBean"
-          class="me.katanamajesty.springfw.TestBean">
-        <constructor-arg value="Your name"/>
+    <bean id="musicBean"
+          class="me.katanamajesty.springfw.ClassicalMusic">
     </bean>
 </beans>

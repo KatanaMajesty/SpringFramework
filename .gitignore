@@ -1,2 +1,8 @@
 # Project exclude paths
+<<<<<<< HEAD
+.idea
 /target/
+=======
+.idea/
+/target/
+>>>>>>> e61ed4d5a06fc899809aa8adff04ba69c66a20f8
