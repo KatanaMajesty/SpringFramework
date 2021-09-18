@@ -1,8 +1,10 @@
 package me.katanamajesty.springfw;
 
+import java.util.List;
+
 public class MusicPlayer {
 
-    private Music music;
+    private List<Music> musicList;
     private String playerName;
     private int volume;
 
@@ -22,8 +24,8 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public void setMusic(Music music) {
-        this.music = music;
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
     };
 
     // Inversion of Control
@@ -32,6 +34,13 @@ public class MusicPlayer {
 //    }
 
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+        for (Music m : musicList) {
+            System.out.println("Playing: " + m.getSong());
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

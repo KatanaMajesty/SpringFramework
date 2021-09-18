@@ -2,19 +2,33 @@
 <beans  xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:util="http://www.springframework.org/schema/util"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:property-placeholder location="musicPlayer.properties"/>
+         http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicBean"
-          class="me.katanamajesty.springfw.RockMusic">
-    </bean>
+    <bean id="rockBean"
+          class="me.katanamajesty.springfw.RockMusic"/>
+
+    <bean id="classicalBean"
+          class="me.katanamajesty.springfw.ClassicalMusic"/>
+
+    <bean id="deathcoreBean"
+          class="me.katanamajesty.springfw.DeathcoreMusic"/>
 
     <bean id="musicPlayer" class="me.katanamajesty.springfw.MusicPlayer">
-        <property name="music" ref="musicBean"/>
+        <property name="musicList" ref="musicListBean"/>
         <property name="playerName" value="${musicPlayer.playerName}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
+
+    <util:list id="musicListBean" value-type="me.katanamajesty.springfw.Music">
+        <ref bean="rockBean"/>
+        <ref bean="classicalBean"/>
+        <ref bean="deathcoreBean"/>
+    </util:list>
 </beans>
