@@ -29,9 +29,9 @@ public class MusicPlayer {
     };
 
     // Inversion of Control
-//    public MusicPlayer() {
-//        // ignored
-//    }
+    private MusicPlayer() {
+        // ignored
+    }
 
     public void playMusic() {
         for (Music m : musicList) {
