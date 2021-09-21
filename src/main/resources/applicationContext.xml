@@ -18,7 +18,10 @@
           class="me.katanamajesty.springfw.ClassicalMusic"/>
 
     <bean id="deathcoreBean"
-          class="me.katanamajesty.springfw.DeathcoreMusic"/>
+          class="me.katanamajesty.springfw.DeathcoreMusic"
+            init-method="onInit"
+            destroy-method="onDestroy"
+            factory-method="getInstance"/>
 
     <bean id="musicPlayer" scope="prototype" class="me.katanamajesty.springfw.MusicPlayer">
         <property name="musicList" ref="musicListBean"/>
