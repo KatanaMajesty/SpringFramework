@@ -1,5 +1,8 @@
 package me.katanamajesty.springfw;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DeathcoreMusic implements Music {
 
     private DeathcoreMusic() {}

@@ -1,7 +1,11 @@
 package me.katanamajesty.springfw;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class MusicPlayer {
 
     private List<Music> musicList;
@@ -12,6 +16,7 @@ public class MusicPlayer {
         return playerName;
     }
 
+    @Value("#{musicPlayer.playerName}")
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
@@ -20,18 +25,15 @@ public class MusicPlayer {
         return volume;
     }
 
+    @Value("#{musicPlayer.volume}")
     public void setVolume(int volume) {
         this.volume = volume;
     }
 
+    @Value("#{musicListBean}")
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     };
-
-    // Inversion of Control
-    private MusicPlayer() {
-        // ignored
-    }
 
     public void playMusic() {
         for (Music m : musicList) {

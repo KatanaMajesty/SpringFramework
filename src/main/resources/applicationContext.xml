@@ -9,29 +9,13 @@
          http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd">
+
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="rockBean"
-          class="me.katanamajesty.springfw.RockMusic"/>
-
-    <bean id="classicalBean"
-          class="me.katanamajesty.springfw.ClassicalMusic"/>
-
-    <bean id="deathcoreBean"
-          class="me.katanamajesty.springfw.DeathcoreMusic"
-            init-method="onInit"
-            destroy-method="onDestroy"
-            factory-method="getInstance"/>
-
-    <bean id="musicPlayer" scope="prototype" class="me.katanamajesty.springfw.MusicPlayer">
-        <property name="musicList" ref="musicListBean"/>
-        <property name="playerName" value="${musicPlayer.playerName}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    <context:component-scan base-package="me.katanamajesty.springfw"/>
 
     <util:list id="musicListBean" value-type="me.katanamajesty.springfw.Music">
-        <ref bean="rockBean"/>
-        <ref bean="classicalBean"/>
-        <ref bean="deathcoreBean"/>
+        <ref bean="deathcoreMusic"/>
+        <ref bean="classicalMusic"/>
+        <ref bean="rockMusic"/>
     </util:list>
 </beans>
