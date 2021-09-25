@@ -1,9 +1,11 @@
 package me.katanamajesty.springfw;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class MusicPlayer {
@@ -35,14 +37,7 @@ public class MusicPlayer {
         this.musicList = musicList;
     };
 
-    public void playMusic() {
-        for (Music m : musicList) {
-            System.out.println("Playing: " + m.getSong());
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    public String playMusic() {
+        return "Playing: " + musicList.get((new Random()).nextInt(3)).getSong();
     }
 }
