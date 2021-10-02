@@ -1,13 +1,15 @@
 package me.katanamajesty.springfw;
 
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
 public class DeathcoreMusic implements Music {
 
+    /*
+    Factory method pattern!
+    Приватный конструктор не позволяет создать объект с помощью new keyword.
+    Тем не менее существует метод getInstance, который возвращает нам объект.
+     */
     private DeathcoreMusic() {}
 
     public static DeathcoreMusic getInstance() {

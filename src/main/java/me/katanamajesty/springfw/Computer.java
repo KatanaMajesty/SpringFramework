@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
-@Scope("prototype")
 public class Computer {
     @Value("${computer.operatingSystem}")
     private String COMPUTER_OS;
@@ -19,7 +17,6 @@ public class Computer {
         return COMPUTER_OS;
     }
 
-    @Autowired
     public Computer(MusicPlayer musicPlayer) {
         this.musicPlayer = musicPlayer;
     }

@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-@Scope("prototype")
 public class MusicPlayer {
 
     public enum MusicEnum {
@@ -18,20 +16,26 @@ public class MusicPlayer {
 
     private List<Music> musicList;
     // ignored
-    private Music music1;
-    private Music music2;
-    private Music music3;
-
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music music1,
-                       @Qualifier("classicalMusic") Music music2,
-                       @Qualifier("deathcoreMusic") Music music3) {
-        this.music1 = music1;
-        this.music2 = music2;
-        this.music3 = music3;
+//    private Music music1;
+//    private Music music2;
+//    private Music music3;
+//
+//    @Autowired
+//    public MusicPlayer(@Qualifier("rockMusic") Music music1,
+//                       @Qualifier("classicalMusic") Music music2,
+//                       @Qualifier("deathcoreMusic") Music music3) {
+//        this.music1 = music1;
+//        this.music2 = music2;
+//        this.music3 = music3;
+//    }
+    private MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    @Value("#{musicList}")
+    public static MusicPlayer getInstance(List<Music> musicList) {
+        return new MusicPlayer(musicList);
+    }
+
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     };
