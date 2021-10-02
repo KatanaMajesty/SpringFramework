@@ -1,10 +1,6 @@
-package me.katanamajesty.springfw;
+package me.katanamajesty.springfw.components;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import me.katanamajesty.springfw.music.IMusic;
 
 import java.util.List;
 
@@ -14,8 +10,8 @@ public class MusicPlayer {
         ROCK, CLASSICAL, DEATHCORE
     }
 
-    private List<Music> musicList;
-    // ignored
+    private final List<IMusic> musicList;
+
 //    private Music music1;
 //    private Music music2;
 //    private Music music3;
@@ -28,17 +24,14 @@ public class MusicPlayer {
 //        this.music2 = music2;
 //        this.music3 = music3;
 //    }
-    private MusicPlayer(List<Music> musicList) {
+
+    private MusicPlayer(List<IMusic> musicList) {
         this.musicList = musicList;
     }
 
-    public static MusicPlayer getInstance(List<Music> musicList) {
+    public static MusicPlayer getInstance(List<IMusic> musicList) {
         return new MusicPlayer(musicList);
     }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    };
 
     public String playMusic(MusicEnum musicEnum) {
         switch (musicEnum) {

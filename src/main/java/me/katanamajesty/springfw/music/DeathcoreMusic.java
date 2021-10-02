@@ -1,9 +1,9 @@
-package me.katanamajesty.springfw;
+package me.katanamajesty.springfw.music;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class DeathcoreMusic implements Music {
+public class DeathcoreMusic implements IMusic {
 
     /*
     Factory method pattern!

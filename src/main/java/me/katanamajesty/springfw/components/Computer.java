@@ -1,12 +1,10 @@
-package me.katanamajesty.springfw;
+package me.katanamajesty.springfw.components;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.Random;
 
 public class Computer {
     @Value("${computer.operatingSystem}")
@@ -34,6 +32,14 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "Computer 1 is " + musicPlayer.playMusic(MusicPlayer.MusicEnum.CLASSICAL) + "\n";
+        Random random = new Random();
+        MusicPlayer.MusicEnum musicEnum;
+        switch (random.nextInt(3)) {
+            case 0 -> musicEnum = MusicPlayer.MusicEnum.DEATHCORE;
+            case 1 -> musicEnum = MusicPlayer.MusicEnum.CLASSICAL;
+            case 2 -> musicEnum = MusicPlayer.MusicEnum.ROCK;
+            default -> musicEnum = null;
+        }
+        return "Computer 1 is " + musicPlayer.playMusic(musicEnum) + "\n";
     }
 }
