@@ -31,7 +31,7 @@ public class MusicPlayer {
         this.music3 = music3;
     }
 
-    @Value("#{musicListBean}")
+    @Value("#{musicList}")
     public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     };
